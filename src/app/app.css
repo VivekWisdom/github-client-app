@@ -1,0 +1,10 @@
+img.github_icon{
+  float: left!important;
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+
+.search{
+  width: 100%;
+}

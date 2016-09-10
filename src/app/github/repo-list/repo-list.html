@@ -1,0 +1,42 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+			<form class="form-inline">
+				<input class="form-control search" type="text" autocomplete="on" (focus)="loadLanguages($event)" (keyup.enter)="getReposWithLang($event.target.value)" placeholder="Type and Click Enter to Search">
+			</form>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+			<label>
+				{{repos?.total_count}} Results in {{(endTime - startTime)/1000.0}} Seconds.
+			</label>
+			<div class="list-group">
+				<a href="{{item.html_url}}" [class.odd]="isOdd" [class.even]="isEven" target="_blank" *ngFor="let item of repos?.items; let index = index; let isOdd=odd; let isEven=even;" class="list-group-item list-group-item-action custom-link">
+					<h4 class="list-group-item-heading">{{ item.full_name }}&emsp;&emsp; <span class="star"><i class="fa fa-star"></i>{{item.stargazers_count}}</span></h4>
+					<p class="list-group-item-text"><b *ngIf="item.language">Language : {{item.language}} |</b><b *ngIf="!item.language">Language : Markdown or Text |</b> {{item.description}}</p>
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 sidebar">
+			<div class="card">
+				<h3 class="card-header"><i class="fa fa-database custom-fa"></i>Rate Limit</h3>
+				<div class="card-block">
+					<p class="card-text">{{rateLimit?.resources.search.remaining}} Search API calls left out of {{rateLimit?.resources.search.limit}}</p>
+				</div>
+			</div>
+			<div class="card">
+				<h3 class="card-header"><i class="fa fa-star custom-fa"></i>Repository Stars</h3>
+				<div class="card-block">
+					<p>
+						Select Value from the dropdown
+					</p>
+					<select [(ngModel)]="star" (ngModelChange)="getReposWithLangStars($event)">
+    				<option *ngFor="let star of dummyStars;let index=index" [selected]="index=='4'" [value]="star">{{star}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
