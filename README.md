@@ -1,4 +1,4 @@
-## angular2-seed
+## Github Client App
 
 A simple starter project acting as Github Client in  Angular 2.
 
