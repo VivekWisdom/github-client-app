@@ -2,8 +2,6 @@ import {Component, OnInit, Pipe, Output, EventEmitter, ElementRef} from '@angula
 import {Github} from '../shared/github';
 import {Observable} from 'rxjs/Observable';
 import {MySearchFilter} from '../../searchFilter';
-import {Ng2SliderComponent} from "ng2-slider-component/ng2-slider.component";
-import {Ng2StyledDirective} from 'ng2-styled-directive/ng2-styled.directive';
 
 @Component({
   selector: 'repo-list',
